@@ -47,3 +47,15 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
+#ifdef OLED_ENABLE
+bool oled_task_user () {
+    //set cursor position
+    oled_set_cursor(0, 1);
+    // Write text
+    oled_write("Hello Clement",false);
+
+    return false;
+}
+
+#endif
+
