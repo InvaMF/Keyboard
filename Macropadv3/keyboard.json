@@ -1,5 +1,5 @@
 {
-    "keyboard_name": "macropadvia", TEST
+    "keyboard_name": "macropadvia",
     "manufacturer": "inva",
     "maintainer": "inva",
     "usb": {
@@ -25,7 +25,7 @@
     },
     "encoder": {
         "rotary": [
-            {"pin_a": "B1", "pin_b": "B3", "resolution": 4},
+            {"pin_a": "B1", "pin_b": "B3", "resolution": 4}
         ]
     },
     "diode_direction": "COL2ROW",
