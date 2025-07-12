@@ -1,5 +1,6 @@
-# macropadv2
+# macropadv3
 
-First prototype with 1 rotary encoder and via
+Final Design with 2 rotary encoders, 2 leds, 1 Oled Screen
 
-qmk compile -kb inva/macropadv2 -km via
+
+qmk compile -kb inva/macropadv3 -km default
