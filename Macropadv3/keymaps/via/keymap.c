@@ -38,19 +38,8 @@ enum layer_names {
     _GAME
 };
 
-#ifdef OLED_ENABLE
-// Draw to OLED
-bool oled_task_user() {
-    // Set cursor position
-    oled_set_cursor(0, 1);
-    
-    // Write text to OLED
-    oled_write("Hello World!", false);
-    
-    return false;
-}
 
-#endif
+
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
@@ -61,10 +50,13 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif
 
 
-// Initialisation du GPIO
-void keyboard_post_init_user(void) {
-    // Configure la broche en sortie
-    setPinOutput(LED_PIN);
-    // Allume la LED
-    writePinHigh(LED_PIN);
+void keyboard_pre_init_user(void) {
+    // Configure les broches comme sorties
+    setPinOutput(LED_PIN_1);
+    setPinOutput(LED_PIN_2);
+}
+void matrix_scan_user(void) {
+    // Allume les deux LEDs (niveau haut)
+    writePinHigh(LED_PIN_1);
+    writePinHigh(LED_PIN_2);
 }
