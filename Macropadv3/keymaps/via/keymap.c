@@ -50,13 +50,17 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif
 
 
-void keyboard_pre_init_user(void) {
-    // Configure les broches comme sorties
-    setPinOutput(LED_PIN_1);
-    setPinOutput(LED_PIN_2);
-}
-void matrix_scan_user(void) {
-    // Allume les deux LEDs (niveau haut)
-    writePinHigh(LED_PIN_1);
-    writePinHigh(LED_PIN_2);
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case 0:
+            rgblight_sethsv(HSV_RED);  // Layer 0 = rouge
+            break;
+        case 1:
+            rgblight_sethsv(HSV_BLUE); // Layer 1 = bleu
+            break;
+        case 2:
+            rgblight_sethsv(HSV_GREEN); // Layer 2 = bleu
+            break;
+    }
+    return state;
 }

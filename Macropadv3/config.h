@@ -6,3 +6,6 @@
 
 #define LED_PIN_1 GP14
 #define LED_PIN_2 GP15
+
+#define WS2812_DI_PIN GP20
+#define RGBLIGHT_LED_COUNT 8
