@@ -49,18 +49,28 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
+void keyboard_post_init_user(void) {
+    rgblight_enable_noeeprom();                // Active les LEDs RGB
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT); // Mode lumière fixe
+    rgblight_sethsv_noeeprom(HSV_RED);      // Couleur rouge doux (par exemple)
+}
+
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case 0:
-            rgblight_sethsv(HSV_RED);  // Layer 0 = rouge
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+            rgblight_sethsv_noeeprom(HSV_RED);  // RED
             break;
         case 1:
-            rgblight_sethsv(HSV_BLUE); // Layer 1 = bleu
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+            rgblight_sethsv_noeeprom(HSV_BLUE);  // BLUE rgblight_sethsv_noeeprom(213, 255, 255);
             break;
         case 2:
-            rgblight_sethsv(HSV_GREEN); // Layer 2 = bleu
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+            rgblight_sethsv_noeeprom(HSV_GREEN);  // GREEN
             break;
     }
     return state;
 }
+
